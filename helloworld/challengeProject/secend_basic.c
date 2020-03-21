@@ -66,6 +66,7 @@ int calc_total_score(int score_kor[100], int num_student) {
     for(int i=0; i<num_student; i++) {
         total += score_kor[i];
     }
+    return total;
 }
 
 double calc_averate_score(int total_score, int num_student) {
