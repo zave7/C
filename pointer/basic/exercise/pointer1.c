@@ -11,7 +11,10 @@ int main(void) {
     double* pDouble_value = NULL;
 
     pChar_value = &char_value;
-    pInt_value = &int_value;
+    pInt_value
+    
+    
+     = &int_value;
     pDouble_value = &double_value;
 
     printf("char %d %x %c\n", sizeof(*pChar_value), pChar_value, *pChar_value);
