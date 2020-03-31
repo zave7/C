@@ -15,7 +15,8 @@ int main(void) {
         scanf("%d", &count);
         if(count > 0) {
             //1. 메모리를 할당 및 해제하고 doInput(), getAgerage() 함수 호출
-            pScore = (int*)malloc(sizeof(int) * count);
+            pScore = (int*)malloc(sizeof(int) * count); //여기서 메모리를 할당해줘야 한다 
+            // doInput 에서 할당해줄경우 주소값이 복사되어 메모리 할당이 이루어지기 때문에 해당 메모리주소 저장해둔것을 잃어버린다.
 
             doInput(count, pScore);
             if(pScore != NULL) {
@@ -30,10 +31,13 @@ int main(void) {
         } else {
             printf("0 이상 입력해야합니다.");
         }
+        if(pScore != NULL)
+            free(pScore);
     } while(count > 0);
 
     return 0;
 }
+
 
 void doInput(int count, int* pScore) {
     //2. count 크기만큼 반복하며 점수를 입력
