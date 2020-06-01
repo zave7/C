@@ -31,16 +31,20 @@ int main(void) {
                 printf("%d : %d\n", pint_array2[i]);
             }
         }
+        // --- ÀÌ ºÎºĞ
         if(NULL != pint_array2 && pint_array != pint_array2) {
             free(pint_array2);
             pint_array = NULL;
+        } else if(NULL != pint_array2 && pint_array == pint_array2) {
+            free(pint_array);
+            pint_array2 = NULL;
         }
         if(NULL != pint_array)
             free(pint_array);
+        if(NULL != pint_array2)
+            free(pint_array2);
+   
     }
-
-
-
-
+    
     return 0;
 }
