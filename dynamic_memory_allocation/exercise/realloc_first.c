@@ -18,26 +18,54 @@
 
 int getElementCount(int elementCount);
 short checkElementCount(int elementCount);
-void extendMemory(int count);
+void extendMemory(int count, int * array);
 void printElements();
 int* getElements(int num);
 
 int main(void) {
 
-    int *array[] = 0;
+    int * array = NULL;
 
     int static elementCount = 0;
 
     int getElementCnt = getElementCount(elementCount);
 
     if(elementCount < getElementCnt ) {
-        extendMemory(getElementCnt);
+        extendMemory(getElementCnt - elementCount, array);
     }    
 
     return 0;
 }
 
+void extendMemory(int count, int * array) {
+    int * temp = NULL;
+    
+    temp = realloc(array, count);
 
+    if(temp != NULL) {
+        if(array != temp) {
+            free(array);
+            array = temp;
+        }
+    }
+
+    int n = 0;
+
+    int size = sizeof(array) / sizeof(int);
+
+    for(int i=i; i<=count; i++) {
+
+        printf("원소를 입력하세요 %d. : ", i);
+        scanf_s("%d", &n);
+        *(array+i) = n;
+        
+    }
+
+    printf("원소 입력이 끝났습니다.");
+    
+
+
+}
 
 int getElementCount(int elementCount) {
 
