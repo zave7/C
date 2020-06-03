@@ -30,8 +30,13 @@ int main(void) {
 
     int getElementCnt = getElementCount(elementCount);
 
+    if(getElementCnt == -1) {
+        return 0;
+    }
+
     if(elementCount < getElementCnt ) {
         extendMemory(getElementCnt - elementCount, array);
+        elementCount = getElementCnt;
     }    
 
     return 0;
@@ -53,10 +58,10 @@ void extendMemory(int count, int * array) {
 
     int size = sizeof(array) / sizeof(int);
 
-    for(int i=i; i<=count; i++) {
+    for(int i=0; i<=count; i++) {
 
         printf("원소를 입력하세요 %d. : ", i);
-        scanf_s("%d", &n);
+        scanf("%d", &n);
         *(array+i) = n;
         
     }
@@ -75,7 +80,7 @@ int getElementCount(int elementCount) {
 
     int i = 0;
     printf("원소의 갯수를 입력해주세요 ( 0개 이상 ) : ");
-    scanf_S("%d", &i);
+    scanf("%d", &i);
 
     if(i <= 0) {
         printf("0 이하의 값을 입력하였습니다. \n프로그램을 종료합니다.");
