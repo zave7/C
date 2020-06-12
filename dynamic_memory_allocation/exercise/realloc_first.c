@@ -24,25 +24,40 @@ int* getElements(int num);
 
 int main(void) {
 
+    printf("start function - main\n");
+
     int * array = NULL;
 
     int static elementCount = 0;
 
-    int getElementCnt = getElementCount(elementCount);
+    int getElementCnt = 0;
 
-    if(getElementCnt == -1) {
-        return 0;
-    }
+    do {
+        getElementCnt = getElementCount(elementCount);
 
-    if(elementCount < getElementCnt ) {
-        extendMemory(getElementCnt - elementCount, array);
-        elementCount = getElementCnt;
-    }    
+        if(getElementCnt == -1) {
+            for(int i=0; i<elementCount; i++) {
+                printf("%d번째 원소 값 : %d\n",i+1, *(array+1));
+            }
+            return 0;
+        }
+
+        if(elementCount < getElementCnt ) {
+            extendMemory(getElementCnt - elementCount, array);
+            elementCount = getElementCnt;
+        }    
+    }while(getElementCnt != -1);    
+
+    printf("end function - main\n");
 
     return 0;
+
 }
 
 void extendMemory(int count, int * array) {
+
+    printf("start function - extendMemory\n");
+
     int * temp = NULL;
     
     temp = realloc(array, count);
@@ -58,21 +73,22 @@ void extendMemory(int count, int * array) {
 
     int size = sizeof(array) / sizeof(int);
 
-    for(int i=0; i<=count; i++) {
+    for(int i=0; i<count; i++) {
 
-        printf("원소를 입력하세요 %d. : ", i);
+        printf("원소를 입력하세요 %d. : ", i+1);
         scanf("%d", &n);
         *(array+i) = n;
         
     }
 
-    printf("원소 입력이 끝났습니다.");
-    
-
+    printf("원소 입력이 끝났습니다.\n");
+    printf("end function - extendMemory\n");
 
 }
 
 int getElementCount(int elementCount) {
+
+    printf("start function - getElementCount\n");
 
     if(elementCount > 0) {
         printf("현재 원소의 갯수 : %d\n" + elementCount);
@@ -83,10 +99,14 @@ int getElementCount(int elementCount) {
     scanf("%d", &i);
 
     if(i <= 0) {
-        printf("0 이하의 값을 입력하였습니다. \n프로그램을 종료합니다.");
+        printf("0 이하의 값을 입력하였습니다. \n프로그램을 종료합니다.\n");
+        printf("end function - getElementCount\n");
         return -1;
     } else {
+        printf("%d 입력\n", i);
+        printf("end function - getElementCount\n");
         return i;
     }
+
 
 }
