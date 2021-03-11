@@ -1,6 +1,6 @@
 # C Study
-   ## Basic Grammar
+   ## 1. Basic Grammar
 
-   ## Pointer
+   ## 2. Pointer
 
-   ## Dynamic Memory Allocation
+   ## 3. Dynamic Memory Allocation
